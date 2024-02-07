@@ -3,12 +3,12 @@
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login Page</title> 
-               
+
         <!-- ICON -->
         <link rel="icon" href="../Media/games-logo.png">      
 
         <!-- Style Sheet -->
-        <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+        <link rel="stylesheet" href="../CSS/Style.css">
 
         <!-- Scripts -->
 
@@ -18,18 +18,29 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<header>Welcome,</header>
+<h1>Welcome</h1>
 <body>
-    <form action="Home.html" method="GET" id="loginForm">
-        <label for="username">username:</label>
-        <input type="text" id="username" placeholder="Enter your username">
-        <br>
-        <label for="password">password:</label>
-        <input type="password" id="password" placeholder="Enter your password">
-        <br>
-        <small>Don't have a password?<a href="Signin.html">Register</a></small>
-        <br>
-        <input type="submit" value="Log in">
+    <form action="../HTML/Home.html" method="GET" id="loginForm">
+        
+        <div class="main-user-info container">
+
+        <div class="user-input"> 
+            <label for="username">username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
+        </div>
+
+        <div class="user-input">
+            <label for="password">password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        
+        <div class="user-input">
+            <input class="submit" type="submit" value="Log in">
+            <p class="go-to">Don't have a password? <a href="../HTML/SignUp.html">Register</a></p>
+        </div>
+
+        </div>
+
     </form>
 </body>
 </html>
