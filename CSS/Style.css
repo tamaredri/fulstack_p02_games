@@ -41,7 +41,13 @@
     box-sizing: border-box; /*total hight&width are set, padding and border will be inside the border*/
 }
 
-body{  background: var(--backgroung-img); }
+
+
+body{  
+    background: var(--backgroung-img);
+    cursor: url("../Media/cursor.png"), auto; 
+}
+
 
 h1, h2{
     margin: 0;
@@ -70,9 +76,13 @@ a, p, label, input,small{
 
 img{ width: 150px; height: 150px; }
 
-li { list-style: none; }
+li { list-style: none; display: inline-block;}
 
-ion-icon { height: 30; width:30; }
+ion-icon { 
+    height: 30;
+    width:30;
+    color: var(--text-color);    
+}
 
 .container{
     margin-top: 20px;
@@ -84,7 +94,6 @@ ion-icon { height: 30; width:30; }
     position: fixed;
     top: 10px;
     left: 10px;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .logo img{
@@ -102,7 +111,7 @@ ion-icon { height: 30; width:30; }
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(255,255,255,0.2);
 }
 
 .title-info img{
@@ -126,7 +135,11 @@ ion-icon { height: 30; width:30; }
 .games-list{
     display: grid;
     gap: 50px;
-    grid-template-columns: repeat(1, 4fr);
+    columns: 2;
+}
+
+.games-list li{
+    display: block;
 }
 
 .game-container{
