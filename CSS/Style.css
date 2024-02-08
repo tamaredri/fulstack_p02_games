@@ -23,6 +23,11 @@
 
     --heading-color: #AAACA1;
     --text-color: #AAACA1;
+    --container-color: #0D0D0D;
+    --dark-pink-color: #F20574;
+    --light-pink-color: #F20587;
+    --dark-blue-color: #056CF2;
+    --light-blue-color: #05DBF2;
 
 
     /* background image */
@@ -42,9 +47,10 @@
 }
 
 
-
 body{  
-    background: var(--backgroung-img);
+    background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255, .2)), 
+    var(--backgroung-img) center center no-repeat;
+    background-size: cover;
     cursor: url("../Media/cursor.png"), auto; 
 }
 
@@ -74,9 +80,9 @@ a, p, label, input,small{
     color: var(--text-color);
 }
 
-img{ width: 150px; height: 150px; }
+img{ width: 100px; height: auto; }
 
-li { list-style: none; display: inline-block;}
+li { list-style: none; }
 
 ion-icon { 
     height: 30;
@@ -87,6 +93,17 @@ ion-icon {
 .container{
     margin-top: 20px;
 }
+
+
+.background-black{
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
+    border-radius: 30px;
+    width: 90%;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+
 
 /* Home Title */
 
@@ -99,7 +116,6 @@ ion-icon {
 .logo img{
     width: 70px;
     height: 70px;
-    position: left;
 }
 
 .home-title{
@@ -107,11 +123,9 @@ ion-icon {
 }
 
 .title-info{
-    margin-top: 15px;
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
     align-items: center;
-    background-color: rgba(255,255,255,0.2);
 }
 
 .title-info img{
@@ -133,19 +147,44 @@ ion-icon {
 /* Games list */
 
 .games-list{
+    padding: 50px;
     display: grid;
     gap: 50px;
-    columns: 2;
+    grid-template-columns: auto auto;
 }
 
 .games-list li{
-    display: block;
+    justify-content: center;
+    display: flex;
 }
 
 .game-container{
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.game-record{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-record ion-icon{
+    color: var(--dark-pink-color)
+}
+
+.game-record p{
+    color: var(--dark-blue-color)
+}
+
+.game-meta-data a{
+    display: none;
+}
+
+#cups{
+    background-color: white;
+    border-radius: 10px
 }
 
 /* Sign Up */
@@ -157,7 +196,6 @@ ion-icon {
     padding: 20px 0;
     width: 90%;
     margin: auto;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .user-input:nth-child(2n){
@@ -209,3 +247,36 @@ ion-icon {
 
 
 
+@media only screen and (min-width: 550px) {
+
+    /* Games list */
+
+    .games-list{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    /* Games list */
+
+    .games-list{
+        grid-template-columns: auto auto auto auto;
+    }
+    .title-info{
+        width: 60%;
+        justify-content: flex-start;
+    }
+}
+@media only screen and (min-width: 992px){
+    
+    /* Games list */
+    
+    img{
+        width: 150px;
+    }
+
+    .title-info{
+        width: 45%;
+    }
+}
