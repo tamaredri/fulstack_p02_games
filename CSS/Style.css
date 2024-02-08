@@ -267,6 +267,13 @@ ion-icon {
         width: 60%;
         justify-content: flex-start;
     }
+
+    /* SignUp page */
+    .user-input{
+        width: 40%;
+        flex-wrap: wrap;
+    }
+
 }
 @media only screen and (min-width: 992px){
     
