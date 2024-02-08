@@ -12,9 +12,25 @@
     --p-font-family : 'Space Mono', sans-serif;
 
 
+    /* sizes */
+    
     --h1-font-size: 70px;
     --h2-font-size: 30px;
     --p-font-size: 20px;
+
+
+    /* colors */
+
+    --heading-color: #AAACA1;
+    --text-color: #AAACA1;
+    --container-color: #0D0D0D;
+    --dark-pink-color: #F20574;
+    --light-pink-color: #F20587;
+    --dark-blue-color: #056CF2;
+    --light-blue-color: #05DBF2;
+
+
+    /* background image */
 
     --backgroung-img: url("../Media/background image.jpg");
 }
@@ -30,12 +46,20 @@
     box-sizing: border-box; /*total hight&width are set, padding and border will be inside the border*/
 }
 
-body{  background: var(--backgroung-img); }
+
+body{  
+    background: linear-gradient(rgba(255,255,255, .2), rgba(255,255,255, .2)), 
+    var(--backgroung-img) center center no-repeat;
+    background-size: cover;
+    cursor: url("../Media/cursor.png"), auto; 
+}
+
 
 h1, h2{
     margin: 0;
     text-align: center;
     display: block;
+    color: var(--heading-color);
 }
 
 h1{
@@ -53,17 +77,33 @@ a, p, label, input,small{
     display: inline-block;
     font-family: var(--p-font-family);
     font-size: var(--p-font-size);
+    color: var(--text-color);
 }
 
-img{ width: 150px; height: 150px; }
+img{ width: 100px; height: auto; }
 
 li { list-style: none; }
 
-ion-icon { height: 30; width:30; }
+ion-icon { 
+    height: 30;
+    width:30;
+    color: var(--text-color);    
+}
 
 .container{
     margin-top: 20px;
 }
+
+
+.background-black{
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
+    border-radius: 30px;
+    width: 90%;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+
 
 /* Home Title */
 
@@ -71,13 +111,11 @@ ion-icon { height: 30; width:30; }
     position: fixed;
     top: 10px;
     left: 10px;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .logo img{
     width: 70px;
     height: 70px;
-    position: left;
 }
 
 .home-title{
@@ -85,11 +123,9 @@ ion-icon { height: 30; width:30; }
 }
 
 .title-info{
-    margin-top: 15px;
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
     align-items: center;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .title-info img{
@@ -111,15 +147,44 @@ ion-icon { height: 30; width:30; }
 /* Games list */
 
 .games-list{
+    padding: 50px;
     display: grid;
     gap: 50px;
-    grid-template-columns: repeat(1, 4fr);
+    grid-template-columns: auto auto;
+}
+
+.games-list li{
+    justify-content: center;
+    display: flex;
 }
 
 .game-container{
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.game-record{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-record ion-icon{
+    color: var(--dark-pink-color)
+}
+
+.game-record p{
+    color: var(--dark-blue-color)
+}
+
+.game-meta-data a{
+    display: none;
+}
+
+#cups{
+    background-color: white;
+    border-radius: 10px
 }
 
 /* Sign Up */
@@ -131,7 +196,6 @@ ion-icon { height: 30; width:30; }
     padding: 20px 0;
     width: 90%;
     margin: auto;
-    background-color: rgba(0,0,0,0.2);
 }
 
 .user-input:nth-child(2n){
@@ -183,3 +247,36 @@ ion-icon { height: 30; width:30; }
 
 
 
+@media only screen and (min-width: 550px) {
+
+    /* Games list */
+
+    .games-list{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    /* Games list */
+
+    .games-list{
+        grid-template-columns: auto auto auto auto;
+    }
+    .title-info{
+        width: 60%;
+        justify-content: flex-start;
+    }
+}
+@media only screen and (min-width: 992px){
+    
+    /* Games list */
+    
+    img{
+        width: 150px;
+    }
+
+    .title-info{
+        width: 45%;
+    }
+}
