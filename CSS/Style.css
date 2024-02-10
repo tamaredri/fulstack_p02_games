@@ -24,7 +24,7 @@
     --heading-color: #AAACA1;
     --text-color: #AAACA1;
     --container-color: #0D0D0D;
-    --dark-pink-color: #F20574;
+    --dark-purpule-color: #7b4e81;
     --light-pink-color: #F20587;
     --dark-blue-color: #056CF2;
     --light-blue-color: #05DBF2;
@@ -73,7 +73,11 @@ h2{
     font-size: var(--h2-font-size);
 }
 
-a, p, label, input,small{
+a,
+p, 
+label, 
+input,
+table{
     display: inline-block;
     font-family: var(--p-font-family);
     font-size: var(--p-font-size);
@@ -90,6 +94,30 @@ ion-icon {
     color: var(--text-color);    
 }
 
+button{
+    background-color: var(--dark-purpule-color);
+    border-radius: 30px;
+    border: none;
+    padding: 5px 20px;
+    color: var(--heading-color);
+    font-family: var(--p-font-family);
+    font-size: var(--p-font-size);
+    margin: 50px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+tr, td{
+    border: 2px solid var(--heading-color);
+}
+
+td{
+    padding: 10px;
+    text-align: center;
+}
+
 .container{
     margin-top: 20px;
 }
@@ -100,7 +128,7 @@ ion-icon {
     border-radius: 30px;
     width: 90%;
     margin: 30px auto;
-    padding: 10px;
+    padding: 20px;
 }
 
 
@@ -171,7 +199,7 @@ ion-icon {
 }
 
 .game-record ion-icon{
-    color: var(--dark-pink-color)
+    color: var(--dark-purpule-color);
 }
 
 .game-record p{
@@ -244,6 +272,150 @@ ion-icon {
 
 }
 
+/* single game view */
+
+
+.single-game-records{
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.start-btn-area{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+}
+
+.game-area{
+    /* display: none; */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Rock - Paper - Scissors */
+
+.display-game-results{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.heart{
+    width: 25%;
+    height: auto;
+}
+
+.computer, .user{
+   display: flex;
+    flex-direction: column;
+}
+
+.computer{
+    align-items: flex-end;
+}
+
+.user{
+    align-items: flex-start;
+}
+
+.computer > img{
+    transform: scaleY(-1);
+    transform: scaleX(-1);
+}
+.computer .lives{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.options{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.options button{
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 10px;
+    width: 100px;
+}
+
+.options img{
+    width: 80%;
+    height: auto;
+}
+
+.options button:first-child{
+    background-color: var(--dark-blue-color);
+}
+
+.options button:nth-child(2){
+    background-color: var(--dark-purpule-color);
+}
+
+.options button:last-child{
+    background-color: var(--light-pink-color);
+}
+
+
+/* trickt cups */
+
+.level-options{
+    display: flex;
+}
+
+.level-options input{
+    width: 50%;
+    color: var(--light-blue-color);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--light-blue-color);
+    border-radius: 20px;
+  }
+
+.cupps-holder{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+}
+
+.cupps-holder img{
+    transform: rotate(180deg);
+}
+
+#ball-holder{
+    position: relative;
+    display: flex;
+}
+
+#ball{
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--light-pink-color);
+}
+
+#table {
+    width: 95%;
+    height: 30px;
+    margin: auto;
+    background-color: brown;
+}
+
+
+
 
 
 
@@ -253,6 +425,14 @@ ion-icon {
 
     .games-list{
         grid-template-columns: auto auto auto;
+    }
+
+    .options{
+        justify-content: space-around;
+    }
+
+    .cupps-holder, #table{
+        width: 60%;
     }
 }
 

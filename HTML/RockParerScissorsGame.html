@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>           
+    <!-- ICON -->
+    <link rel="icon" href="../Media/games-logo.png">      
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="../CSS/Style.css">
+    
+    <!-- Scripts -->
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <main>
+      <div class="background-black">
+        <div class="title-info">
+          <img id=img1 src="../Media/rock paper scissors.png">
+          <div>
+            <p>last visit: </p>
+            <p>dd-mm-yyyy </p>
+          </div>
+        </div>
+  
+        <table class="single-game-records">
+          <tr>
+            <td>user name</td>
+            <td>best score</td>
+          </tr>
+          <tr>
+            <td>ori</td>
+            <td>300</td>
+          </tr>
+          <tr>
+            <td>tamar</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>s123</td>
+            <td>100</td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class="start-btn-area background-black">
+        <button>
+          start playing
+        </button>
+      </div>
+     
+
+      <div class="game-area background-black">
+
+        <p>ROUNDS: </p>
+        
+        
+        <div class="display-game-results">
+
+          <div class="user">
+              <h2>you</h2>
+              <div class="lives">
+                  <img class="heart" src="../Media/heart.png">
+                  <img class="heart" src="../Media/heart.png">
+                  <img class="heart" src="../Media/heart.png">
+              </div>
+              <img src="../Media/paper.png">
+          </div>
+
+          <div class="computer">
+              <h2>computer</h2>
+              <div class="lives">
+                <img class="heart" src="../Media/heart.png">
+                <img class="heart" src="../Media/heart.png">
+                <img class="heart" src="../Media/heart.png">
+              </div>
+              <img src="../Media/paper.png">
+          </div>
+
+        </div>
+
+        <div class="options">
+          <button>
+            <img src="../Media/rock.png">
+          </button>
+          <button class="paper-btn">
+            <img src="../Media/paper.png">
+          </button>
+          <button>
+            <img src="../Media/scissors.png">
+          </button>
+        </div>
+
+      </div>
+    </main>
+    
+
+  </body>
+</html>
