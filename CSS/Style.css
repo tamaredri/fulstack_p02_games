@@ -124,7 +124,7 @@ td{
 
 
 .background-black{
-    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
+    background: linear-gradient(rgba(0, 0, 0, .85), rgba(0, 0, 0, .85));
     border-radius: 30px;
     width: 90%;
     margin: 30px auto;
@@ -283,18 +283,22 @@ td{
 }
 
 .start-btn-area{
-    display: flex;
     justify-content: center;
     flex-direction: column;
-    display: none;
 }
 
 .game-area{
-    /* display: none; */
     padding: 30px 20px;
-    display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.activate{
+    display: flex;
+}
+
+.deactivate{
+    display: none;
 }
 
 
@@ -307,7 +311,7 @@ td{
 }
 
 .heart{
-    width: 25%;
+    width: 15%;
     height: auto;
 }
 
@@ -362,6 +366,10 @@ td{
 
 .options button:last-child{
     background-color: var(--light-pink-color);
+}
+
+.hand-box{
+    padding: 40px 10px;
 }
 
 
