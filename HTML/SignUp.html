@@ -14,52 +14,57 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="../JS/Script.js"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<h1>Register</h1>
 <body>
-    <form action="../HTML/Home.html" method="GET" id="loginForm">
+    <h1>Register</h1>
 
-        <div class="main-user-info container">
+    <form action="../HTML/Home.html" method="GET" id="signup-form">
 
-            <div class="user-input"> 
-                <label for="username">full name:</label>
-                <input type="text" id="fullName" placeholder="Enter your full name">
-            </div>
-            
-            <div class="user-input"> 
-                <label for="username">username:</label>
-                <input type="text" id="username" placeholder="Enter your username">
-            </div>
-                
-            <div class="user-input">
-                <label for="password">password:</label>
-                <input type="password" id="password" placeholder="Enter your password">
-            </div>
-                
-            <div class="user-input">
-                <label for="password">verify password:</label>
-                <input type="password" id="password" placeholder="Enter your password again">
-            </div>
-                
-            <div class="user-input">
-                <label for="username">mail:</label>
-                <input type="text" id="mail" placeholder="Enter your mail">
-            </div>
-                
-            <div class="user-input">
-                <label for="username">phone number:</label>
-                <input type="number" id="phoneNumber" placeholder="Enter your phone number">
-            </div>
-            
-            <div class="user-input"> 
-                <input class="submit" type="submit" value="Sign up">
-            </div>
+        <div class="main-user-info container background-black">
 
+            <div class="main-user-info container">
+                
+                <div class="user-input"> 
+                    <label for="username">full name:</label>
+                    <input type="text" id="full-name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="user-input"> 
+                    <label for="username">username:</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="user-input">
+                    <label for="password">password:</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="user-input">
+                    <label for="password">verify password:</label>
+                    <input type="password" id="verify-password" placeholder="Enter your password again" required>
+                </div>
+                
+                <div class="user-input">
+                    <label for="username">mail:</label>
+                    <input type="text" id="mail" placeholder="Enter your mail" >
+                </div>
+                
+                <div class="user-input">
+                    <label for="username">phone number:</label>
+                    <input type="number" id="phone-number" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="user-input"> 
+                    <input class="submit" type="submit" value="Sign up">
+                </div>
+                
+            </div>
         </div>
-        
+            
     </form>
 </body>
 </html>

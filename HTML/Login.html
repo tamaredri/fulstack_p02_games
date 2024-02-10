@@ -14,24 +14,25 @@
 
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="../JS/Script.js"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Log In:</h1>
-    <form action="../HTML/Home.html" method="GET" id="loginForm">
+    <form id="login-form" name="login-form" action="../HTML/Home.html" method="GET">
         
         <div class="main-user-info container background-black">
 
         <div class="user-input"> 
             <label for="username">username:</label>
-            <input type="text" id="username" placeholder="Enter your username">
+            <input type="text" id="username" placeholder="Enter your username" required>
         </div>
 
         <div class="user-input">
             <label for="password">password:</label>
-            <input type="password" id="password" placeholder="Enter your password">
+            <input type="password" id="password" placeholder="Enter your password" required>
         </div>
         
         <div class="user-input">
