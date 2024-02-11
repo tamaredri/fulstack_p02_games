@@ -129,6 +129,14 @@ function load_home_page(){
 }
 
 /*
+    Random Number - integer between 0 and 2
+ */
+function getRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 3);
+    console.log(randomNumber);
+}
+
+/*
     Rock - Paper - Scissors
 */
 
