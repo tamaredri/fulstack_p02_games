@@ -1,4 +1,3 @@
-let username;
 
 /*
     Restart Page functionalities
@@ -26,22 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 
 function login_submit(e) {
-    let form_username = e.target.username.value;
+    let form_username = e.target.username.value.trim();
     if (!username_exists(form_username)) {
         alertUsername();
         e.preventDefault();
         return false;
     }
-    let password = e.target.password.value;;
+    let password = e.target.password.value.trim();
     if(!valid_password(form_username, password)){
         alert(' ' + form_username + ' entered the wrong password. Please try again');
         e.preventDefault();
         return false;
     }
 
-    username = form_username;
+   
+    store_current_user(form_username);
 
-    console.log(username);
     console.log(form_username);
 
     return true;
@@ -70,6 +69,48 @@ function alertUsername(username) {
     }
     else{
         document.getElementById("login-form").reset();
+    }
+}
+
+function store_current_user(user){
+    const user_data = {
+        username: user,
+        time: new Date().toUTCString()
+     }
+
+     localStorage.setItem('current_user', JSON.stringify(user_data));
+}
+
+// ***** cookies
+
+function get_cookie() {
+    let name = "username=";
+    let decoded_cookie = decodeURIComponent(document.cookie);
+    let cookies_list = decoded_cookie.split(';');
+
+    for(let i = 0; i < cookies_list.length; i++) {
+      let cookie = cookies_list[i];
+      while (cookie.charAt(0) == ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        // extract the username from the cookie according to its location in the string.
+        return c.substring(name.length, c.length);
+      }
+    }
+    // no username was found
+    return "";
+  }
+
+function check_cookie(username) {
+    return username === get_cookie();
+}
+
+function set_cookies(username){
+    if(!check_cookie(username)){
+        const d = new Date();
+        d.setHours(currentDate.getHours() + 12);
+        document.cookie = "username=" + username + "; expires=" +  d.toUTCString() + ';';
     }
 }
 
@@ -118,25 +159,6 @@ function store_user(user){
 }
 
 /*
-    Home page
-*/
-
-function load_home_page(){
-    /*
-        1. update the last game played by the user. if none - remove the section frpm the DOM
-        2. for each game, upload the highest score.
-    */
-}
-
-/*
-    Random Number - integer between 0 and 2
- */
-function getRandomNumber() {
-    const randomNumber = Math.floor(Math.random() * 3);
-    console.log(randomNumber);
-}
-
-/*
     Rock - Paper - Scissors
 */
 
@@ -147,6 +169,15 @@ function load_RPS_page(){
     */
 }
 
+
+/*
+    Random Number - integer between 0 and 2
+ */
+    function getRandomNumber() {
+        const randomNumber = Math.floor(Math.random() * 3);
+        console.log(randomNumber);
+    }
+    
 
 /*
     Tricky Cups
