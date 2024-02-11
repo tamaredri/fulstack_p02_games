@@ -152,7 +152,7 @@ function store_user(user){
         name: user['full-name'].value,
         phone: user['phone-number'].value,
         mail: user.mail.value,
-        'game-data':  ""
+        'game-data':""
      }
 
      localStorage.setItem(user.username.value, JSON.stringify(user_data));
