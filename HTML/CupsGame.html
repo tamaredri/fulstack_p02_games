@@ -14,7 +14,8 @@
 
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-      <script src="../JS/Game.js"></script>
+      <script src="../JS/GameGeneral.js"></script>
+      <script src="../JS/TrickyCups.js"></script>
 
       <!-- Fonts -->
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,6 +49,7 @@
               </div>
               <div class="row">
                 <ion-icon name="ribbon-outline"></ion-icon>
+                <p id="total-record-name"></p>
                 <p id="total-record">20</p>
               </div>
             </div>
@@ -61,7 +63,7 @@
           <p>What level?</p>
           <div class="level-options">
             <p>Easy</p>
-            <input type="range" min="0" max="2" step="1">
+            <input id="level" type="range" min="0" max="2" step="1">
             <p>Hard</p>
           </div>
         </div>
@@ -75,16 +77,24 @@
       <div class="game-area background-black deactivate">
         <div>
           <p>dificulty level - </p>
-          <p id="level">normal</p>
+          <p id="level-name">normal</p>
         </div>
 
         <div class="cupps-holder">
-          <img src="../Media/single cup.png" alt="">
-          <div id="ball-holder">
+          <button class="cup-btn" id="1st">
             <img src="../Media/single cup.png" alt="">
-            <div id="ball"></div>
-          </div>
-          <img src="../Media/single cup.png" alt="">
+          </button>
+
+          <button class="cup-btn" id="2nd">
+            <div id="ball-holder">
+              <img src="../Media/single cup.png" alt="">
+              <div id="ball"></div>
+            </div>
+          </button>
+
+          <button class="cup-btn" id="3rd">
+            <img src="../Media/single cup.png" alt="">
+          </button>
         </div>
 
         <div id="table"></div>

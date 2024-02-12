@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //console.log((document.cookie))
     //add_gamesData("RPS",5,new Date(),"../Media/rock paper scissors.png");
     //add_gamesData("TC",30,new Date(),"../Media/tricky cups.png");
-    last_game_played();
+    load_home_page();
 
 })
 
@@ -66,6 +66,9 @@ function load_home_page(){
         2. for each game, upload the highest score.
         if the user is new - remove the title-info element and write : 'enjoy your first use'
     */
+   last_game_played();
+   get_game_results('RPS');
+   get_game_results('TC');
 }
 
 function add_gamesData(game_name,score,last_visit,path){
@@ -131,3 +134,23 @@ function format_date(date) {
   
     return `${day}/${month}/${year}, ${hours}:${minutes}`;
   }
+
+  /**
+ * 
+ * @param {*} game_name 
+ */
+function get_game_results(game_name){
+    let game_storage = localStorage.getItem(game_name);
+    console.log(game_storage);
+    let record = document.getElementById(game_name + '-record');
+    console.log(record);
+    if(!game_storage){
+        record.innerText = 0;
+        console.log('created new game record');
+    }
+    else {
+        game_storage = JSON.parse(localStorage.getItem(game_name));
+        record.innerText = game_storage["score"];
+        console.log(game_name);
+    }
+}

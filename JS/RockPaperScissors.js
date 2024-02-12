@@ -1,21 +1,8 @@
-let user = JSON.parse(localStorage.getItem("current_user")).username;
-
 /*
     Restart Page functionalities
 */
 
-document.addEventListener("DOMContentLoaded",  ()=>{
-    var currentPage = window.location.pathname;
-
-    console.log(currentPage);
-
-    if (currentPage.includes('RockParerScissorsGame')){
-        load_RPS_page();
-    }
-    else if (currentPage.includes('CupsGame')){
-        load_cups_page();
-    }
-});
+document.addEventListener("DOMContentLoaded",load_RPS_page);
 
 
 /*
@@ -54,57 +41,17 @@ function load_RPS_page(){
     });
 
     last_visit('RPS');
-}
-
-function last_visit(game_name){
-    let user_data = JSON.parse(localStorage.getItem(user));
-    console.log(user);
-    console.log(user_data);
-
-    if(!user_data.hasOwnProperty("game-data")){
-        document.getElementById("last-visit").innerText = "your first use, enjoy";
-    }
-    else{
-        let games_data = user_data["game-data"];
-        let values = Object.values(games_data);
-
-        if(!games_data.hasOwnProperty(game_name)){
-            document.getElementById("last-visit").innerText = "your first use, enjoy";
-        }
-        else{
-            const d = format_date(new Date(games_data[game_name]["last_visit"]));
-            document.getElementById("last-visit").innerText = d;
-        }   
-    }
-}
-
-function format_date(date) {
-    let day = date.getDate().toString().padStart(2, '0');
-    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
-    let year = date.getFullYear();
-    let hours = date.getHours().toString().padStart(2, '0');
-    let minutes = date.getMinutes().toString().padStart(2, '0');
-  
-    return `${day}/${month}/${year}, ${hours}:${minutes}`;
+    update_view_score_table('RPS');
 }
 
 
 
-
-function start_game(e){
-    document.getElementsByClassName('start-btn-area')[0].classList.remove('activate');
-    document.getElementsByClassName('start-btn-area')[0].classList.add('deactivate');
-
-    document.getElementsByClassName('game-area')[0].classList.remove('deactivate');
-    document.getElementsByClassName('game-area')[0].classList.add('activate');
-
+function initialize(){
     rounds = 0;
     user_life = 3;
     computer_life = 3;
     score = 30;
     update_rounds();
-
-    console.log('start game');
 }
 
 function finish_game(){
@@ -129,10 +76,6 @@ function player_hand_selection(hand){
     disable_buttons();
 
     check_winner(hand, computer_hand);
-}
-
-function getRandomNumber() {
-    return Math.floor(Math.random() * 9) % 3;
 }
 
 /**
@@ -298,74 +241,5 @@ function check_game_over(){
 
 }
 
-/**
- * update the local storage according to the game results
- * @param {*} game the name of the game to store - RPS / TC
- */
-function store_results(game){
-    store_user_results(game);
-    store_game_results(game);
-}
 
-/**
- * update the user's local storage according to the game results
- * @param {*} game_name RPS / TC
- */
-function store_user_results(game_name){
-    let user_storage = JSON.parse(localStorage.getItem(user));
 
-    console.log(user_storage);
-
-    const d = new Date();
-    console.log(d.toUTCString());
-    
-    if(!user_storage.hasOwnProperty('game-data')){
-        // create the propery and store it
-        user_storage['game-data'] = {}
-    }
-    
-    let game_list = user_storage['game-data'];
-
-    if(!game_list.hasOwnProperty(game_name)){
-        // add the game to the user
-        if(game === 'RPS'){
-            user_storage["game-data"][game_name] = { 'score': score, 'last_visit': d, image_path:'../Media/rock paper scissors.png' };
-        }
-        else{
-            user_storage["game-data"][game_name] = { 'score': score, 'last_visit': d, image_path:'../Media/tricky cups.png' };
-        }
-        console.log(user_storage);
-    }
-    else{
-        //update the memory
-        let game = game_list[game_name];
-        game['last_visit'] = d;
-
-        if(score > game['score']){
-            game['score'] = score;
-        }
-    }
-
-    console.log(user_storage);
-    localStorage.setItem(user, JSON.stringify(user_storage));
-}
-
-/**
- * 
- * @param {*} game_name 
- */
-function store_game_results(game_name){
-
-}
-
-/*
-    Tricky Cups
-*/
-
-function load_cups_page(){
-    /**
-     *  1. the same like RPS
-     *  2. make the game work
-     */
-    last_visit('TC');
-}

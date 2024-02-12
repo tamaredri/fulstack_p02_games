@@ -94,30 +94,6 @@ ion-icon {
     color: var(--text-color);    
 }
 
-button{
-    background-color: var(--dark-purpule-color);
-    border-radius: 30px;
-    border: none;
-    padding: 5px 20px;
-    color: var(--heading-color);
-    font-family: var(--p-font-family);
-    font-size: var(--p-font-size);
-    margin: 50px;
-}
-
-table{
-    border-collapse: collapse;
-}
-
-tr, td{
-    border: 2px solid var(--heading-color);
-}
-
-td{
-    padding: 10px;
-    text-align: center;
-}
-
 .container{
     margin-top: 20px;
 }
@@ -308,6 +284,17 @@ td{
     flex-direction: column;
 }
 
+#start{
+    background-color: var(--dark-purpule-color);
+    border-radius: 30px;
+    border: none;
+    padding: 5px 20px;
+    color: var(--heading-color);
+    font-family: var(--p-font-family);
+    font-size: var(--p-font-size);
+    margin: 50px;
+}
+
 .game-area{
     padding: 30px 20px;
     flex-direction: column;
@@ -428,11 +415,10 @@ td{
 
 .level-options input{
     width: 50%;
-    color: var(--light-blue-color);
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    background-color: var(--light-blue-color);
+    background-color: var(--dark-blue-color);
     border-radius: 20px;
   }
 
@@ -440,24 +426,30 @@ input[type="range"]::-webkit-slider-runnable-track {
     display: flex;
     justify-content: space-between;
     padding-top: 70px;
+    z-index: 1;
 }
 
 .cupps-holder img{
     transform: rotate(180deg);
 }
 
+.cup-btn{
+    background: none;
+    border: none;
+}
+
+
 #ball-holder{
     position: relative;
-    display: flex;
 }
 
 #ball{
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     left: 30%;
+    border-radius: 50%;
     width: 40%;
     height: 40%;
-    border-radius: 50%;
     z-index: -1;
     background-color: var(--light-pink-color);
 }
