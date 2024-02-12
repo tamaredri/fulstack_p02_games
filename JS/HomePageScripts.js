@@ -3,14 +3,57 @@ let user = JSON.parse(localStorage.getItem("current_user")).username;
 document.addEventListener("DOMContentLoaded", () => {
     
     //console.log((document.cookie))
-    add_gamesData("RPS",5,new Date(),"../Media/rock paper scissors.png");
-    add_gamesData("TC",30,new Date(),"../Media/tricky cups.png");
+    //add_gamesData("RPS",5,new Date(),"../Media/rock paper scissors.png");
+    //add_gamesData("TC",30,new Date(),"../Media/tricky cups.png");
     last_game_played();
 
 })
 
 function fill_dataBase(){
     /* * */
+    const user_data = {
+        username: "shira45",
+        password: "1234",
+        name: "shira kono",
+        phone: "052-2547999",
+        mail: "",
+     }
+     localStorage.setItem(user.username.value, JSON.stringify(user_data));
+
+     const user_data1 = {
+        username: "shir745",
+        password: "1234",
+        name: "shir konovitch",
+        phone: "052-2512399",
+        mail: "",
+     }
+     localStorage.setItem(user.username.value, JSON.stringify(user_data1));
+    const user_data2 = {
+        username: "matan31",
+        password: "1234",
+        name: "matan konovitch",
+        phone: "054-4812399",
+        mail: "",
+     }
+     localStorage.setItem(user.username.value, JSON.stringify(user_data2));
+
+     const user_data3 = {
+        username: "shay18",
+        password: "1234",
+        name: "shay konovitch",
+        phone: "053-2341229",
+        mail: "",
+     }
+     localStorage.setItem(user.username.value, JSON.stringify(user_data3));
+
+     const user_data4 = {
+        username: "lavi95",
+        password: "1234",
+        name: "lavi konovitch",
+        phone: "054-5673324",
+        mail: "",
+     }
+     localStorage.setItem(user.username.value, JSON.stringify(user_data4));
 }
 
 /*
@@ -75,6 +118,16 @@ function update_view_last_game_played(games_data){
         document.getElementById("play-image").classList.add("cups");
     }
     const d = new Date(games_data["last_visit"]);
-    document.getElementById("play-date").innerText = d.toUTCString().replace("GMT","");
+    document.getElementById("play-date").innerText = format_date(d);
     document.getElementById("play-record").innerText = games_data["score"];
 }
+
+function format_date(date) {
+    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+    let year = date.getFullYear();
+    let hours = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+  
+    return `${day}/${month}/${year}, ${hours}:${minutes}`;
+  }

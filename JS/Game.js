@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded",  ()=>{
 */
 
 let rounds;
+let user_life;
+let computer_life;
+let score;
   
 
 function load_RPS_page(){
@@ -53,34 +56,27 @@ function start_game(e){
     document.getElementsByClassName('game-area')[0].classList.add('activate');
 
     rounds = 0;
+    user_life = 3;
+    computer_life = 3;
     update_rounds();
 
     console.log('start game');
 }
 
 function finish_game(){
-    document.getElementsByClassName('start-btn-area')[0].classList.remove('deactivate');
-    document.getElementsByClassName('start-btn-area')[0].classList.add('activate');
-
-    document.getElementsByClassName('game-area')[0].classList.remove('activate');
-    document.getElementsByClassName('game-area')[0].classList.add('deactivate');
+    location.reload();
 }
 
 function player_hand_selection(hand){
     // start the clock counting back
     const computer_hand = getRandomNumber();
-
-    //add delay
+    console.log(hand);
 
     update_selection_view(hand, 'user');
     update_selection_view(computer_hand, 'computer');
-    console.log(hand);
+    disable_buttons();
 
     check_winner(hand, computer_hand);
-
-    
-    // increment the round
-    update_rounds();
 }
 
 function getRandomNumber() {
@@ -109,52 +105,128 @@ function update_selection_view(hand, user){
     
 }
 
-let fliker = 0;
+function disable_buttons(){
+    [...document.getElementsByClassName('options')[0].getElementsByTagName('button')].forEach(element => {
+        element.disabled = true;
+        element.classList.add('btn-disabld');
+    });
+}
+
+function enable_buttons(){
+    [...document.getElementsByClassName('options')[0].getElementsByTagName('button')].forEach(element => {
+        element.disabled = false;
+        element.classList.remove('btn-disabld');
+    });
+}
 
 function check_winner(hand, computer_hand){
+    console.log(computer_life);
+    console.log(user_life);
+    
+
+    let fliker = 0;
     let id;
     let loser;
-    let loser_tag;
+    let heart_tag;
     if (hand === computer_hand){
         /**
          * tie
          */
         // alert('its a tie!');
+        fliker = 5;
+
     }
-    else if((computer_hand + 1) % 3 === hand){
-        /**
-         * hand wins
-         */
-        loser = 'computer';
-        loser_tag = document.getElementsByClassName(loser)[0];
-        id = setInterval(animate_loseing_life, 0.5);
-        // alert('you won this round');
+    else {
+        if((computer_hand + 1) % 3 === hand){
+            /**
+             * hand wins
+             */
+            // alert('you won this round');
+            loser = 'computer';
+        }
+        else{
+            /**
+             * computer wins
+             */
+            // alert('you lost this round');
+            loser = 'user';
+        }
+        heart_tag = document.getElementsByClassName(loser)[0].getElementsByClassName('lives')[0].getElementsByClassName('heart');
     }
-    else{
-        /**
-         * computer wins
-         */
-        // alert('you lost this round');
-        loser = 'user';
-        loser_tag = document.getElementsByClassName(loser)[0];
-        id = setInterval(animate_loseing_life, 0.5);
-    }
+    
+    id = setInterval(animate_loseing_life, 500);
 
     function animate_loseing_life(){
         
-        if (fliker++ === 1){
+        if (fliker === 6){
             clearInterval(id);
-        }
-        else{
-            loser_tag.getElementsByClassName('heart')[0].classList.add('remove-heart');
+
+            switch (loser) {
+                case 'user':
+                    user_life--;
+                    break;
+                case 'computer':
+                    computer_life--;
+                    break;
+            }
+
+            enable_buttons();
+            fliker = 0;
+            console.log('reset display');
             
+            update_rounds();
+
+            update_selection_view(1, 'user');
+            update_selection_view(1, 'computer');
+            check_game_over();
+
         }
-    }    
+        else if(fliker % 2){
+
+            switch (loser) {
+                case 'user':
+                    heart_tag[user_life - 1].classList.add('remove-heart');
+                    break;
+                case 'computer':
+                    heart_tag[3 - computer_life].classList.add('remove-heart');
+                    break;
+            }
+            console.log('add heart');
+            fliker++;
+        }
+        else {
+            switch (loser) {
+                case 'user':
+                    heart_tag[user_life - 1].classList.remove('remove-heart');
+                    break;
+                case 'computer':
+                    heart_tag[3 - computer_life].classList.remove('remove-heart');
+                    break;
+            }
+            console.log('remove heart');
+            fliker++;
+        }
+    }  
 }
 
 
 function update_rounds(){
     document.getElementById('rounds').innerText = ++rounds;
+}
+
+function check_game_over(){
+    console.log(computer_life);
+    console.log(user_life);
+
+    if(computer_life === 0){
+        alert('You won!! your score is ${}');
+        finish_game();
+    }
+    else if (user_life === 0){
+        alert('GAME OVER!! You lost. your score is ${}');
+        finish_game();
+    }
+
 }
 
 
