@@ -163,12 +163,15 @@ td{
     height: 100px;
 }
 
-.row p:nth-child(1){
-    text-decoration-line: underline;
-    margin-right: 10px;
+.row{
+    display: flex;
+    align-items: center;
+    padding: 5px;
 }
+
 .row p{
     display: inline-block;
+    margin-left: 10px;
 }
 
 
@@ -331,6 +334,16 @@ td{
 .heart{
     width: 15%;
     height: auto;
+    transition: visibility 0.5s;
+
+}
+
+.remove-heart{
+    visibility: hidden;
+}
+
+.remove-heart.active{
+    display: hidden;
 }
 
 .computer, .user{

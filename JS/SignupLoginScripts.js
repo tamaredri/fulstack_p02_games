@@ -158,37 +158,5 @@ function store_user(user){
      localStorage.setItem(user.username.value, JSON.stringify(user_data));
 }
 
-/*
-    Rock - Paper - Scissors
-*/
-
-function load_RPS_page(){
-    /*
-        1. load the last-seen for this user. if none - overide the text and say 'your first use, enjoy'
-        2. functions from the slides to make the game work.
-    */
-}
-
-
-/*
-    Random Number - integer between 0 and 2
- */
-    function getRandomNumber() {
-        const randomNumber = Math.floor(Math.random() * 3);
-        console.log(randomNumber);
-    }
-    
-
-/*
-    Tricky Cups
-*/
-
-function load_Cups_page(){
-    /**
-     *  1. the same like RPS
-     *  2. make the game work
-     */
-}
-
 
 

@@ -14,7 +14,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <script src="../JS/Game.js"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
@@ -37,7 +37,7 @@
           <div class="title-info">
             <img id=img1 src="../Media/rock paper scissors.png">
             <div>
-              <p>last played: </p>
+              <ion-icon name="time-outline"></ion-icon>
               <p>dd-mm-yyyy </p>
             </div>
           </div>
@@ -66,9 +66,8 @@
 
       <section>
 
-        
         <div class="start-btn-area background-black activate">
-          <button>
+          <button id="start">
             start playing
           </button>
         </div>
@@ -76,7 +75,9 @@
         
         <div class="game-area background-black deactivate">
           
-          <h2>ROUNDS: </h2>
+          <h2>ROUND: </h2>
+          <h1 id="rounds"></h1>
+          
           
           
           <div class="display-game-results">
@@ -104,13 +105,13 @@
             </div>
             
             <div class="options">
-              <button>
+              <button id="rock-btn">
                 <img src="../Media/rock.png">
               </button>
-              <button class="paper-btn">
+              <button id="paper-btn">
                 <img src="../Media/paper.png">
               </button>
-              <button>
+              <button id="scissors-btn">
                 <img src="../Media/scissors.png">
               </button>
             </div>
