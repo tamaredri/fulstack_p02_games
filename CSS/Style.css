@@ -152,13 +152,13 @@ td{
 
 .title-info{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     padding: 5px 30px;
 }
 
 .title-info img{
-    margin-right: 30px;
     width: 100px;
     height: 100px;
 }
