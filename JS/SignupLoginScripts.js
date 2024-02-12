@@ -151,8 +151,7 @@ function store_user(user){
         password: user.password.value,
         name: user['full-name'].value,
         phone: user['phone-number'].value,
-        mail: user.mail.value,
-        'game-data':""
+        mail: user.mail.value
      }
 
      localStorage.setItem(user.username.value, JSON.stringify(user_data));

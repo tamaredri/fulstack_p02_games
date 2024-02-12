@@ -7,10 +7,6 @@ document.addEventListener("DOMContentLoaded",  ()=>{
 
     console.log(currentPage);
 
-    /*
-        store all the games and add default values for the highest scores.
-    */
-
     if (currentPage.includes('RockParerScissorsGame')){
         load_RPS_page();
     }
