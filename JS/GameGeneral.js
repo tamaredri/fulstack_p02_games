@@ -55,7 +55,7 @@ function update_view_score_table(game_name){
 
         //my record
         document.getElementById("total-record-name").innerText = user + ', ';
-        document.getElementById("total-record").innerText = JSON.parse(localStorage);
+        document.getElementById("total-record").innerText = JSON.parse(localStorage.getItem(game_name))["score"];
     }
 }
 
@@ -66,6 +66,10 @@ function update_view_score_table(game_name){
 function store_results(game){
     store_user_results(game);
     store_game_results(game);
+}
+
+function finish_game(){
+    location.reload();
 }
 
 /**

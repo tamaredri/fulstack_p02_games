@@ -426,16 +426,30 @@ input[type="range"]::-webkit-slider-runnable-track {
     display: flex;
     justify-content: space-between;
     padding-top: 70px;
-    z-index: 1;
+    z-index: 1;    
 }
 
 .cupps-holder img{
     transform: rotate(180deg);
+    position: relative;
+
 }
+
 
 .cup-btn{
     background: none;
     border: none;
+    transition: all ease-out 5s;
+}
+
+.hard{
+    transition: all ease-out 3s;
+}
+.normal{
+    transition: all ease-out 5s;
+}
+.easy{
+    transition: all ease-out 7s;
 }
 
 
@@ -455,7 +469,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 #table {
-    width: 95%;
+    width: 100%;
     height: 30px;
     margin: auto;
     background-color: brown;

@@ -54,9 +54,7 @@ function initialize(){
     update_rounds();
 }
 
-function finish_game(){
-    location.reload();
-}
+
 
 /**
  * manage the game process
