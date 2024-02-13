@@ -12,10 +12,6 @@ let swap_number;
 let interval;
 
 function load_TC_page(){
-    /**
-     *  1. the same like RPS
-     *  2. make the game work
-     */
     document.getElementById('start').addEventListener('click',start_game);
 
     document.getElementById(['first']).addEventListener('click', ()=>{
@@ -43,6 +39,9 @@ function initialize(e){
     show_ball("second",30);
 }
 
+/**
+ * set the game parameters according to the level selected by the user
+ */
 function set_level_data(){
     switch (level) {
         case "0":
@@ -113,7 +112,11 @@ function enable_buttons(){
     });
 }
 
-
+/**
+ * the begining of the game - animate moving the cup up and down and revealing the ball
+ * @param {*} cup 
+ * @param {*} interval 
+ */
 function show_ball(cup,interval) {
     let id = null;
     const elem = document.getElementById(cup).getElementsByTagName("img")[0]; 
@@ -151,6 +154,11 @@ function show_ball(cup,interval) {
       }
 }
 
+/**
+ * swap animation for switching between 2 buttons (cups)
+ * @param {*} button1 
+ * @param {*} button2 
+ */
 function switchButtons(button1, button2) {
     var style1 = window.getComputedStyle(button1);
     var style2 = window.getComputedStyle(button2);
@@ -187,6 +195,9 @@ function switchButtons(button1, button2) {
     console.log('new position 2 ' + (translateX2 + gap));
 }
 
+/**
+ * swap cups according to the values of interval and number of swaps
+ */
 function swap_cups() {
     
     let id = null; 
@@ -223,6 +234,11 @@ function swap_cups() {
 
 }
 
+/**
+ * returns the html element that coresponds with the 'place' id
+ * @param {*} place 
+ * @returns 
+ */
 function get_cup_btn(place){
 switch (place) {
     case 0:
@@ -242,6 +258,11 @@ switch (place) {
 }    
 }
 
+/**
+ * after the swapping is over, the user can select a button and according to his selection, his cup rises and exposes if he was right or wrong
+ * @param {*} cup 
+ * @param {*} interval 
+ */
 function show_result(cup, interval) {
     let id = null;
     const elem = document.getElementById(cup).getElementsByTagName("img")[0]; 
@@ -271,26 +292,6 @@ function show_result(cup, interval) {
             elem.style.top = position + "px";
         }
     }
-}
-
-function select_cup(cup){
-    show_result("first");
-    show_result("second");
-    show_result("third"); 
-}
-
-function getElementIndex(element) {
-    var parent = element.parentNode;
-    var children = parent.children;
-
-    for (var i = 0; i < children.length; i++) {
-        if (children[i] === element) {
-            return i;
-        }
-    }
-
-    // Element not found in parent
-    return -1;
 }
 
 

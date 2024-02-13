@@ -20,11 +20,6 @@ let score;
  */
 
 function load_RPS_page(){
-    /*
-        1. load the last-seen for this user. if none - overide the text and say 'your first use, enjoy'
-        2. functions from the slides to make the game work.
-    */
-
     document.getElementById('start').addEventListener('click',start_game);
 
 

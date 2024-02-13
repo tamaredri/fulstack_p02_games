@@ -1,12 +1,8 @@
 let user = JSON.parse(localStorage.getItem("current_user")).username;
 
+// call the function after the page loads
 document.addEventListener("DOMContentLoaded", () => {
-    
-    //console.log((document.cookie))
-    //add_gamesData("RPS",5,new Date(),"../Media/rock paper scissors.png");
-    //add_gamesData("TC",30,new Date(),"../Media/tricky cups.png");
     load_home_page();
-
 })
 
 function fill_dataBase(){
@@ -60,29 +56,18 @@ function fill_dataBase(){
     Home page
 */
 
+/**
+ * encapsulates all the necessary initializations for the home page
+ */
 function load_home_page(){
-    /*
-        1. update the last game played by the user. if none - remove the section frpm the DOM
-        2. for each game, upload the highest score.
-        if the user is new - remove the title-info element and write : 'enjoy your first use'
-    */
    last_game_played();
    get_game_results('RPS');
    get_game_results('TC');
 }
 
-function add_gamesData(game_name,score,last_visit,path){
-    let user_data = JSON.parse(localStorage.getItem(user));
-    console.log(user_data);
-    if(!user_data.hasOwnProperty("game-data")){
-        user_data["game-data"] = {};
-    }
-    user_data["game-data"][game_name] = { score: score, last_visit: last_visit, image_path:path };
-    console.log(user_data);
-    localStorage.setItem(user, JSON.stringify(user_data));
-
-}
-
+/**
+ * find the recent game the user played and update the view accordingly
+ */
 function last_game_played(){
     let user_data = JSON.parse(localStorage.getItem(user));
     console.log(user);
@@ -115,6 +100,10 @@ function last_game_played(){
     document.getElementById("welcome").innerText += " " + user;
 }
 
+/**
+ * update the view of a game acording to the last game that was played by the user
+ * @param {*} games_data 
+ */
 function update_view_last_game_played(games_data){
     document.getElementById("play-image").setAttribute("src",games_data["image_path"]);
     if(games_data["image_path"].includes('tricky cups.png')){
@@ -125,6 +114,11 @@ function update_view_last_game_played(games_data){
     document.getElementById("play-record").innerText = games_data["score"];
 }
 
+/**
+ * return a readable string that represents time
+ * @param {*} date 
+ * @returns 
+ */
 function format_date(date) {
     let day = date.getDate().toString().padStart(2, '0');
     let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
@@ -135,8 +129,8 @@ function format_date(date) {
     return `${day}/${month}/${year}, ${hours}:${minutes}`;
   }
 
-  /**
- * 
+/**
+ * update the higest score for each game
  * @param {*} game_name 
  */
 function get_game_results(game_name){

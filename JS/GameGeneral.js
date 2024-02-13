@@ -2,9 +2,15 @@
  * general functions
  */
 
+/**
+ * get the current user from the local storage
+ */
 let user = JSON.parse(localStorage.getItem("current_user")).username;
 
-
+/**
+ * update a game's view according to the users current record and the highest score in this game
+ * @param {*} game_name 
+ */
 function last_visit(game_name){
     let user_data = JSON.parse(localStorage.getItem(user));
     console.log(user);
@@ -30,6 +36,11 @@ function last_visit(game_name){
     }
 }
 
+/**
+ * return a readable string for representing a date
+ * @param {*} date 
+ * @returns 
+ */
 function format_date(date) {
     let day = date.getDate().toString().padStart(2, '0');
     let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
@@ -38,24 +49,6 @@ function format_date(date) {
     let minutes = date.getMinutes().toString().padStart(2, '0');
   
     return `${day}/${month}/${year}, ${hours}:${minutes}`;
-}
-
-function update_view_score_table(game_name){
-    let game_data = localStorage.getItem(game_name);
-    if(!game_data){
-        document.getElementById("total-record-name").innerText = ""
-        document.getElementById("total-record").innerText = 0;
-        document.getElementById("my-record").innerText = "0";
-    }
-    else{
-        let game = JSON.parse(game_data);
-        // record
-        document.getElementById("total-record-name").innerText = game['username'] + ', ';
-        document.getElementById("total-record").innerText = game["score"];
-
-        //my record
-        document.getElementById("my-record").innerText = JSON.parse(localStorage.getItem(game_name))["score"];
-    }
 }
 
 /**
@@ -67,9 +60,6 @@ function store_results(game){
     store_game_results(game);
 }
 
-function finish_game(){
-    location.reload();
-}
 
 /**
  * update the user's local storage according to the game results
@@ -115,7 +105,7 @@ function store_user_results(game_name){
 }
 
 /**
- * 
+ * update the game's local storage according to the users score
  * @param {*} game_name 
  */
 function store_game_results(game_name){
@@ -132,7 +122,9 @@ function store_game_results(game_name){
     }
 }
 
-
+/**
+ * open the game-area and initialize the game
+ */
 function start_game(e){
     document.getElementsByClassName('start-btn-area')[0].classList.remove('activate');
     document.getElementsByClassName('start-btn-area')[0].classList.add('deactivate');
@@ -145,7 +137,9 @@ function start_game(e){
     console.log('start game');
 }
 
-
+function finish_game(){
+    location.reload();
+}
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 9) % 3;

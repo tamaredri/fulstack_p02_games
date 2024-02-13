@@ -46,6 +46,11 @@ function login_submit(e) {
     return true;
 }
 
+/**
+ * check if the user exists in the local storage
+ * @param {*} username 
+ * @returns 
+ */
 function username_exists(username){
     if(!localStorage.getItem(username)){
         console.log('the user ' + username + ' does not exist');
@@ -54,6 +59,12 @@ function username_exists(username){
     return true;
 }
 
+/**
+ * check if the paswword is the right one
+ * @param {*} username 
+ * @param {*} password 
+ * @returns 
+ */
 function valid_password(username, password){
     if(JSON.parse(localStorage.getItem(username)).password != password){
         console.log('wrong password');
@@ -62,6 +73,10 @@ function valid_password(username, password){
     return true;
 }
 
+/**
+ * present the user with a choise when one of the values entered were wrong.
+ * @param {*} username 
+ */
 function alertUsername(username) {
     var confirmation = confirm("the username " + username + " does not exist.\nClick 'ok' to register as a new user.\nClick 'Cancel' to try again.");
     if (confirmation) {
@@ -72,6 +87,10 @@ function alertUsername(username) {
     }
 }
 
+/**
+ * once the sign in process was sucessful - set the current
+ * @param {*} user 
+ */
 function store_current_user(user){
     const user_data = {
         username: user,
