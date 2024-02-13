@@ -146,6 +146,7 @@ function signup_submit(e){
 
 
 function store_user(user){
+    console.log(user);
     const user_data = {
         username: user.username.value,
         password: user.password.value,

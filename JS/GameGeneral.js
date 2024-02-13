@@ -45,17 +45,16 @@ function update_view_score_table(game_name){
     if(!game_data){
         document.getElementById("total-record-name").innerText = ""
         document.getElementById("total-record").innerText = 0;
-        document.getElementById("my-record").innerText = " 0";
+        document.getElementById("my-record").innerText = "0";
     }
     else{
         let game = JSON.parse(game_data);
         // record
-        document.getElementById("total-record-name").innerText = game['usename'] + ', ';
+        document.getElementById("total-record-name").innerText = game['username'] + ', ';
         document.getElementById("total-record").innerText = game["score"];
 
         //my record
-        document.getElementById("total-record-name").innerText = user + ', ';
-        document.getElementById("total-record").innerText = JSON.parse(localStorage.getItem(game_name))["score"];
+        document.getElementById("my-record").innerText = JSON.parse(localStorage.getItem(game_name))["score"];
     }
 }
 

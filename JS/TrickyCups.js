@@ -46,7 +46,7 @@ function initialize(e){
 function set_level_data(){
     switch (level) {
         case "0":
-            interval = 9000;
+            interval = 3000;
             swap_number = 5;
             [...document.getElementsByClassName('cup-btn')].forEach(element => {
                 element.classList.add('easy');
@@ -54,16 +54,16 @@ function set_level_data(){
             break;
         
         case "1":
-            interval = 7000;
-            swap_number = 10;
+            interval = 2000;
+            swap_number = 7;
             [...document.getElementsByClassName('cup-btn')].forEach(element => {
                 element.classList.add('normal');
             });
             break;
 
         case "2":
-            interval = 5000;
-            swap_number = 20;
+            interval = 1000;
+            swap_number = 9;
             [...document.getElementsByClassName('cup-btn')].forEach(element => {
                 element.classList.add('hard');
             });
@@ -120,8 +120,8 @@ function show_ball(cup,interval) {
    
     console.log(elem);
 
-    let pos_start = elem.style.top;
     let pos = elem.style.top;
+    console.log('pos: ' + pos);
     let move = -50;
 
     id = setInterval(frame1, interval);
@@ -134,6 +134,7 @@ function show_ball(cup,interval) {
         id = setInterval(frame2, interval);
       } else {
         pos--; 
+        console.log(pos);
         elem.style.top = pos + "px";
       }
     }
@@ -143,58 +144,47 @@ function show_ball(cup,interval) {
           clearInterval(id);
           swap_cups();
         } else {
-          pos++; 
-          elem.style.top = pos + "px";
+            pos++; 
+            console.log(pos);
+            elem.style.top = pos + "px";
         }
       }
 }
 
 function switchButtons(button1, button2) {
-    var position1 = button1.offsetLeft;
-    var position2 = button2.offsetLeft;
-
-    console.log(position1);
-    console.log(position2);
-    // Get the computed style of the element
     var style1 = window.getComputedStyle(button1);
     var style2 = window.getComputedStyle(button2);
 
-    // Extract the translateX value from the transform property
     var transformValue1 = style1.transform;
     var transformValue2 = style2.transform;
     var translateX1 = 0; // Default value if there is no translateX property
     var translateX2 = 0; // Default value if there is no translateX property
-    console.log(transformValue1);
-    console.log(transformValue2);
+    
     if (transformValue1 && transformValue1 !== 'none') {
-        var match = transformValue1.match(/translateX\(([-0-9.]+)px\)/);
-        translateX1= transformValue1[4];
-    }
-
-
-    if (transformValue2 && transformValue2 !== 'none') {
-        var match = transformValue2.match(/translateX\(([-0-9.]+)px\)/);
-        translateX2 = transformValue2[4];
+        translateX1 = parseFloat(transformValue1.split(',')[4].trim());
     }
     
-    let num = position1 -position2;
-    console.log(num);
-    console.log(translateX1);
-    console.log(translateX2);
 
-    if (num < 0 ) {
-        button1.style.transform = `translateX(${translateX1-num}px)`;
-        button2.style.transform = `translateX(${translateX2+num}px)`;
-        console.log("translateX1 === 0");
-    } else {
-        button1.style.transform = `translateX(${translateX1+num}px)`;
-        button2.style.transform = `translateX(${translateX2-num}px)`;
-        console.log("translateX2 != 0");
+    if (transformValue2 && transformValue2 !== 'none') {
+        translateX2 = parseFloat(transformValue2.split(',')[4].trim());
     }
 
-    //document.getElementsByClassName("cups-holder")[0].children[index1] = button2;
-    //document.getElementsByClassName("cups-holder")[0].children[index2] = button1;
+    console.log('translateX1 ' + translateX1);
+    console.log('translateX2 ' + translateX2);
 
+    var position1 = button1.offsetLeft + translateX1;
+    var position2 = button2.offsetLeft + translateX2;
+
+    console.log('position1 ' + position1);
+    console.log('position2 ' + position2);
+
+    let gap = position1 - position2;
+    
+    button1.style.transform = `translateX(${translateX1 - gap}px)`;
+    console.log('new position 1 ' + (translateX1 - gap));
+
+    button2.style.transform = `translateX(${translateX2 + gap}px)`;
+    console.log('new position 2 ' + (translateX2 + gap));
 }
 
 function swap_cups() {
@@ -218,66 +208,70 @@ function swap_cups() {
             second=getRandomNumber();
             }
 
+            console.log('id 1 ' + first);
+            console.log('id 2 ' + second);
+
             const elem = get_cup_btn(first); 
             const elem2 = get_cup_btn(second);
             switchButtons(elem,elem2);
 
-            swap_number--;   
+            swap_number--;  
+            
+            console.log('swap iteration' + swap_number);
         }
     }
 
-  }
+}
 
-  function get_cup_btn(place){
-    switch (place) {
-        case 0:
-            return document.getElementById("first");
-            break;
-        
-        case 1:
-            return document.getElementById("second");
-            break;
-
-        case 2:
-            return document.getElementById("third");
-            break;
+function get_cup_btn(place){
+switch (place) {
+    case 0:
+        return document.getElementById("first");
+        break;
     
-        default:
-            break;
-    }    
-  }
+    case 1:
+        return document.getElementById("second");
+        break;
 
-  function show_result(cup,interval) {
+    case 2:
+        return document.getElementById("third");
+        break;
+
+    default:
+        break;
+}    
+}
+
+function show_result(cup, interval) {
     let id = null;
     const elem = document.getElementById(cup).getElementsByTagName("img")[0]; 
-   
+
     console.log(elem);
 
-    let pos_start = elem.style.top;
-    let pos = elem.style.top;
+    let position = 0;
+    console.log(position);
+
     let move = -50;
 
     id = setInterval(frame1, interval);
-  
-    console.log(pos);
 
     function frame1() {
-      if (pos === move) {
-        clearInterval(id);
-        if(cup==="second"){
-            alert("you won your score is " + score);
-        }else{
-            score = 0;
-            alert("you lose your score is " + score);
+        if (position === move) {
+            clearInterval(id);
+            if(cup==="second"){
+                alert("you won your score is " + score);
+            }else{
+                score = 0;
+                alert("you lose your score is " + score);
+            }
+            store_results("TC");
+            finish_game();
+        } else {
+            position--; 
+            elem.style.top = position + "px";
         }
-        store_results("TC");
-        finish_game();
-      } else {
-        pos--; 
-        elem.style.top = pos + "px";
-      }
     }
-  }
+}
 
 function select_cup(cup){
     show_result("first");

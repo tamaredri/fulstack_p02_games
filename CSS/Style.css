@@ -443,13 +443,13 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .hard{
-    transition: all ease-out 3s;
+    transition: all ease-out 0.5s;
 }
 .normal{
-    transition: all ease-out 5s;
+    transition: all ease-out 1s;
 }
 .easy{
-    transition: all ease-out 7s;
+    transition: all ease-out 1.5s;
 }
 
 
@@ -510,6 +510,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     }
 
     /* SignUp page */
+
     .user-input{
         width: 40%;
         flex-wrap: wrap;
@@ -526,5 +527,6 @@ input[type="range"]::-webkit-slider-runnable-track {
 
     .title-info{
         width: 45%;
+        margin: auto;
     }
 }
