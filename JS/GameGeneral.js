@@ -36,6 +36,24 @@ function last_visit(game_name){
     }
 }
 
+function update_view_score_table(game_name){
+    let game_data = localStorage.getItem(game_name);
+    if(!game_data){
+        document.getElementById("total-record-name").innerText = ""
+        document.getElementById("total-record").innerText = 0;
+        document.getElementById("my-record").innerText = "0";
+    }
+    else{
+        let game = JSON.parse(game_data);
+        // record
+        document.getElementById("total-record-name").innerText = game['username'] + ', ';
+        document.getElementById("total-record").innerText = game["score"];
+
+        //my record
+        document.getElementById("my-record").innerText = JSON.parse(localStorage.getItem(game_name))["score"];
+    }
+}
+
 /**
  * return a readable string for representing a date
  * @param {*} date 
